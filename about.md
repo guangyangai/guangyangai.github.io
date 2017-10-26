@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Data Scientist with a PhD degree in Engineering, Enrolling in Udacity Self Driving Engineering Nanodegree
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+I am a Ph.D. graduate from Stanford University with a degree in Energy Resources Engineering. Because of the bad situation in oil industry by the time I graduate, I tried very hard to get into data science field. Right now I am working as a data scientist in a start-up compnay at Boston. At the same time, I am taking the famous Udacity's self-driving cars nanodegree. I took a few courses related to that field while I was at Stanford, such as digital image processing and machine learning. As a matter of fact, I applied some of the machine learning technologies in some of the projects in my theis, to predict contaminant transport and reservoir production. I got fascinated with the future possibilities of AI and computer vision. I want to further get involved with its development. 
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[guang.k.yang@gmail.com](mailto:guang.k.yang@gmail.com)

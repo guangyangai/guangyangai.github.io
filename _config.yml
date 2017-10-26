@@ -9,7 +9,7 @@ name: Guang Yang
 description: >- # this means to ignore newlines until "avatar:"
   Posts and projects about AI, self driving cars, and more broadly data science
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://github.com/guangyangai/guangyangai.github.io/blob/master/images/scrf_meeting.jpg
+avatar: https://github.com/guangyangai/guangyangai.github.io/blob/master/images/scrf_meeting.png
 
 #
 # Flags below are optional
@@ -23,7 +23,7 @@ footer-links:
   flickr:
   github: guangyangai
   instagram:
-  linkedin: 'https://www.linkedin.com/in/guang-kevin-yang-504a0519/'
+  linkedin: guang-kevin-yang-504a0519
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: #

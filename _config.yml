@@ -7,11 +7,9 @@ name: Guang Yang
 
 # Short bio or description (displayed in the header)
 description: >- # this means to ignore newlines until "avatar:"
-  Posts and projects about AI, self driving cars, data science and classes 
-  I've taken at Stanford and MIT.
-
+  Posts and projects about AI, self driving cars, and more broadly data science
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
+avatar: https://github.com/guangyangai/guangyangai.github.io/blob/master/images/scrf_meeting.jpg
 
 #
 # Flags below are optional

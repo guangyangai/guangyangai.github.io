@@ -19,51 +19,51 @@ Features      | [pyspark.sql](https://s3.amazonaws.com/assets.datacamp.com/blog_
 
 
 Supported spark data sources in *pyspark.sql*:
-  +JSON
-  +Parquet
-  +CSV
-  +TXT
-  +AVRO
+  * JSON
+  * Parquet
+  * CSV
+  * TXT
+  * AVRO
 
 Supported spark data sources in *pyspark.sql* are listed [here](http://pandas.pydata.org/pandas-docs/stable/io.html)
 
 
 Data inspection methods in *pyspark.sql*:
-  +df.dtypes 
-  +df.show()
-  +df.head()
-  +df.first()
-  +df.take(n)
-  +df.schema
-  +df.describe().show()
-  +df.columns
-  +df.count()
-  +df.distinct.count()
-  +df.explain()
+  * df.dtypes 
+  * df.show()
+  * df.head()
+  * df.first()
+  * df.take(n)
+  * df.schema
+  * df.describe().show()
+  * df.columns
+  * df.count()
+  * df.distinct.count()
+  * df.explain()
 
 Data inspection methods in *pandas*
-  +df['column_name'].value_counts()
-  +df.info
-  +df.desribe() 
+  * df['column_name'].value_counts()
+  * df.info
+  * df.desribe() 
 
 Supported Operations on DataFrames in *pyspark.sql*:
-  +Conversion
-  +Indexing
-  +Grouping/Aggregation
-  +Selection/Subsetting
-  +Filtering
-  +Joining
+  * Conversion
+  * Indexing
+  * Grouping/Aggregation
+  * Selection/Subsetting
+  * Filtering
+  * Joining
 
 Supported Operations on DataFrames in *pandas*:
-  +Conversion
-  +Indexing
-  +Iteration
-  +Grouping/Aggregation
-  +Function application
-  +Selection/Subsetting
-  +Filtering
-  +Reshaping
-  +Combining/Joining
-  +Plotting 
+  * Conversion
+  * Indexing
+  * Iteration
+  * Grouping/Aggregation
+  * Function application
+  * Selection/Subsetting
+  * Filtering
+  * Reshaping
+  * Combining/Joining
+  * Plotting 
 
 

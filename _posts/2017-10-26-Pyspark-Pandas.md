@@ -4,7 +4,7 @@ title: PySpark.sql v.s. Pandas
 ---
 ![alt text](http://spark.apache.org/docs/latest/api/python/_static/spark-logo-hd.png "Spark")![alt text](http://pandas.pydata.org/_static/pandas_logo.png "Pandas")
 
-[Pyspark.sql](http://spark.apache.org/docs/latest/api/python/pyspark.sql.html) and [Pandas](http://pandas.pydata.org/pandas-docs/stable/) are both nice data analysis tools, providing fast and expressive data structures to work with relational or labeled data. Depends on the size of data for your analysis, you could choose either one as they have quite similar functionalities. These analysis will form the basis for applying machine learning on these data. Today let's do a pararrel comparison between *Pyspark.sql* and *Pandas*.
+[Pyspark.sql](http://spark.apache.org/docs/latest/api/python/pyspark.sql.html) and [Pandas](http://pandas.pydata.org/pandas-docs/stable/) are both nice data analysis tools, providing fast and expressive data structures to work with relational or labeled data. Depending on the size of data for your analysis, you could choose either one as they have quite similar functionalities. These analysis will form the basis for applying machine learning on these data. Today let's do a parallel comparison between *Pyspark.sql* and *Pandas*.
 
 
 
@@ -20,10 +20,10 @@ Features      | [pyspark.sql](https://s3.amazonaws.com/assets.datacamp.com/blog_
 
 Supported spark data sources in *pyspark.sql*:
   * JSON
-  * Parquet
+  * [Parquet](https://parquet.apache.org/)
   * CSV
   * TXT
-  * AVRO
+  * [AVRO](https://avro.apache.org/docs/current/)
 
 Supported spark data sources in *pyspark.sql* are listed [here](http://pandas.pydata.org/pandas-docs/stable/io.html)
 

@@ -10,15 +10,60 @@ title: PySpark.sql v.s. Pandas
 
 
 Features      | [pyspark.sql](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PySpark_SQL_Cheat_Sheet_Python.pdf)   | [pandas](https://github.com/pandas-dev/pandas/blob/master/doc/cheatsheet/Pandas_Cheat_Sheet.pdf)
-------------- |:-------------:| --------:
-Primary Data Structure     | DataFrame, Column, Row | Panel, DataFrame, Series 
+------------- |:----------------------------------------------------:| --------------------------------------------------:
+Data Structure| DataFrame, Column, Row                               | Panel, DataFrame, Series 
+I/O           | RDDs, Spark data Sources                             | Text, Binary, SQL
+Inspection    | Supported                                            | Supported
+Operation     | Less                                                 | More 
+Extensions    |[GeoSpark](https://github.com/DataSystemsLab/GeoSpark)| [GeoPandas](https://github.com/geopandas/geopandas)
 
-Object Creation      | From RDDs, Spark data Sources (JSON, Parquet, CSV, TXT, AVRO)    |   From text, binary, SQL file 
 
-Data Inspection | df.dtypes, df.show(), df.head(), df.first(), df.take(n), df.schema, df.describe().show(), df.columns, df.count(),df.distinct.count(),df.explain()   |    df['column_name'].value_counts(), df.info, df.desribe() 
+Supported spark data sources in *pyspark.sql*::
++JSON
++Parquet
++CSV
++TXT
++AVRO
 
-Operation on DataFrame | Conversion, Indexing, Grouping/Aggregation,  Selection/Subsetting, Filtering, Joining| Conversion, Indexing, Iteration, Grouping/Aggregation, Function application, Selection/Subsetting, Filtering, Reshaping, Combining/Joining, Plotting 
+Supported spark data sources in *pyspark.sql* are listed [here](http://pandas.pydata.org/pandas-docs/stable/io.html)
 
-Extensions     | [GeoSpark](https://github.com/DataSystemsLab/GeoSpark)      | [GeoPandas](https://github.com/geopandas/geopandas)
+
+Data inspection methods in *pyspark.sql*:
++df.dtypes, 
++df.show(), 
++df.head(), 
++df.first(), 
++df.take(n), 
++df.schema, 
++df.describe().show(),
++df.columns, 
++df.count(),
++df.distinct.count(),
++df.explain()
+
+Data inspection methods in *pandas*
++df['column_name'].value_counts()
++df.info
++df.desribe() 
+
+Supported Operations on DataFrames in *pyspark.sql*:
++Conversion
++Indexing
++Grouping/Aggregation
++Selection/Subsetting
++Filtering
++Joining
+
+Supported Operations on DataFrames in *pandas*:
++Conversion
++Indexing
++Iteration
++Grouping/Aggregation
++Function application
++Selection/Subsetting
++Filtering
++Reshaping
++Combining/Joining
++Plotting 
 
 

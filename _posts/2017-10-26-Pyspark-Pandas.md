@@ -10,60 +10,60 @@ title: PySpark.sql v.s. Pandas
 
 
 Features      | [pyspark.sql](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PySpark_SQL_Cheat_Sheet_Python.pdf)   | [pandas](https://github.com/pandas-dev/pandas/blob/master/doc/cheatsheet/Pandas_Cheat_Sheet.pdf)
-------------- |:----------------------------------------------------:| --------------------------------------------------:
-Data Structure| DataFrame, Column, Row                               | Panel, DataFrame, Series 
-I/O           | RDDs, Spark data Sources                             | Text, Binary, SQL
-Inspection    | Supported                                            | Supported
-Operation     | Less                                                 | More 
-Extensions    |[GeoSpark](https://github.com/DataSystemsLab/GeoSpark)| [GeoPandas](https://github.com/geopandas/geopandas)
+------------- |:----------------------------------------------------:| :--------------------------------------------------:
+**Data Structure**| DataFrame, Column, Row                               | Panel, DataFrame, Series 
+**I/O**           | RDDs, Spark data Sources                             | Text, Binary, SQL
+**Inspection**    | Supported                                            | Supported
+**Operation**     | Less                                                 | More 
+**Extensions**    |[GeoSpark](https://github.com/DataSystemsLab/GeoSpark)| [GeoPandas](https://github.com/geopandas/geopandas)
 
 
-Supported spark data sources in *pyspark.sql*::
-+JSON
-+Parquet
-+CSV
-+TXT
-+AVRO
+Supported spark data sources in *pyspark.sql*:
+  +JSON
+  +Parquet
+  +CSV
+  +TXT
+  +AVRO
 
 Supported spark data sources in *pyspark.sql* are listed [here](http://pandas.pydata.org/pandas-docs/stable/io.html)
 
 
 Data inspection methods in *pyspark.sql*:
-+df.dtypes, 
-+df.show(), 
-+df.head(), 
-+df.first(), 
-+df.take(n), 
-+df.schema, 
-+df.describe().show(),
-+df.columns, 
-+df.count(),
-+df.distinct.count(),
-+df.explain()
+  +df.dtypes 
+  +df.show()
+  +df.head()
+  +df.first()
+  +df.take(n)
+  +df.schema
+  +df.describe().show()
+  +df.columns
+  +df.count()
+  +df.distinct.count()
+  +df.explain()
 
 Data inspection methods in *pandas*
-+df['column_name'].value_counts()
-+df.info
-+df.desribe() 
+  +df['column_name'].value_counts()
+  +df.info
+  +df.desribe() 
 
 Supported Operations on DataFrames in *pyspark.sql*:
-+Conversion
-+Indexing
-+Grouping/Aggregation
-+Selection/Subsetting
-+Filtering
-+Joining
+  +Conversion
+  +Indexing
+  +Grouping/Aggregation
+  +Selection/Subsetting
+  +Filtering
+  +Joining
 
 Supported Operations on DataFrames in *pandas*:
-+Conversion
-+Indexing
-+Iteration
-+Grouping/Aggregation
-+Function application
-+Selection/Subsetting
-+Filtering
-+Reshaping
-+Combining/Joining
-+Plotting 
+  +Conversion
+  +Indexing
+  +Iteration
+  +Grouping/Aggregation
+  +Function application
+  +Selection/Subsetting
+  +Filtering
+  +Reshaping
+  +Combining/Joining
+  +Plotting 
 
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: PySpark.sql v.s. Pandas
+comments: true
 ---
 ![alt text](http://spark.apache.org/docs/latest/api/python/_static/spark-logo-hd.png "Spark")![alt text](http://pandas.pydata.org/_static/pandas_logo.png "Pandas")
 

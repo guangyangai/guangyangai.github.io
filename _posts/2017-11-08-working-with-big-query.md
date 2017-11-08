@@ -1,4 +1,6 @@
-Currently supported format are: 
+[BigQuery](https://cloud.google.com/bigquery/) is Google's fully managed, petabyte scale, low cost enterprise data warehouse for analytics. Queries based on stored datasets can be used as back-end services to create beatiful reports in your front-end UI. In my daily work, I save whatever got posted back to our clients or consumed messages sent by clients to avro file. At the end of day, those avro files are loaded automatically to BigQuery. And scheduled queries on those BigQuery datasets are triggered to continuously track our KPI. 
+
+Currently supported format of files that can be loaded into bigquery datasets are: 
   * CSV
   * NEWLINE_DELIMITED_JSON
   * DATASTORE_BACKUP

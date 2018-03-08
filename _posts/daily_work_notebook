@@ -1,0 +1,37 @@
+#Alias command:
+
+alias cssh= ‘gcloud compute —project <project-id> ssh —zone <zone-id>'
+
+then if needed to ssh into any gce compute instances, just type 
+
+cssh <gce_instance>
+
+
+
+#Using virtual environment:
+
+setting up the virtual environment (fixed all packages versions) 
+add a folder called environments under projects folder and then type
+`virtualenv ENVIRONNAME`
+
+
+To activate the environment:
+
+`source ~/Projects/environments/ENVIRONNAME/bin/activate`
+
+To deactivate:
+`deactivate`
+
+For example:
+
+Under ~/Projects/environments/, create a folder called myvirtualenv
+
+`virtualenv myvirtualenv`
+
+To activate:
+
+`source ~/Projects/environments/myvirtualenv/bin/activate`
+
+To check installed packages:
+
+`pip freeze` 

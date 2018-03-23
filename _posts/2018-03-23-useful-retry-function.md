@@ -52,4 +52,4 @@ def retry(max_attempts=3, exceptions=()):
         return wrapper
 
     return decorator
-    ```
+```

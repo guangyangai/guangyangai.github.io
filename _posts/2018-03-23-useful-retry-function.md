@@ -2,7 +2,7 @@ In data ETL or query operations, API requests are frequently made towards the se
 Often in that case, exceptions would be raised and your pipeline would break. Below is a useful retry decorator function that can be 
 used to retry the API request if it failed at the first try without breaking your pipeline. 
 
-```
+```python
 def retry(max_attempts=3, exceptions=()):
     """
     Decorator to retry a function a configurable number of times for

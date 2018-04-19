@@ -3,15 +3,15 @@ of correct and wrong classification on a set of test data for which the true val
 
 confusion matrix:
 
-|             |					predicted negatives  |   predicted postives |
-|             |:------------------------------:| ------------------:| 
+|              |					predicted negatives  |   predicted postives |
+|--------------|:------------------------------:| ------------------:| 
 |actual negatives   | # of true negatives     |# of false positves |
 
 |actual positves   | # of false negatives     |# of true positives |
 
 Here in the matrix, negatives means your classifier returns a False boolean value and postive means your classifier returns a True boolean value.  
 
-###Metrics options
+### Metrics options
 
 1. ROC curve (AUC score): 
 ROC always use row-wise metric in the confusion matrix, it plots TPR (true positive rate) against FPR (false postive rate).
@@ -34,7 +34,7 @@ Precision score = # of true postives / (# of true postives + # of false positive
 f1 score favors classifiers that balances recall score and precision score
 
 
-###Choice of metrics
+### Choice of metrics
 
 Choice of metric depends on the application that whether you care more about false negatives or false positives, or the disparity between your actual postives samples and actual negative samples. 
 

@@ -3,11 +3,11 @@ of correct and wrong classification on a set of test data for which the true val
 
 confusion matrix:
 
-| |					predicted negatives  |   predicted postives |
-| ------------- |:-------------:| 
-| actual negatives   | # of true negatives     |# of false positves
+|             |					predicted negatives  |   predicted postives |
+|             |:------------------------------:| ------------------:| 
+|actual negatives   | # of true negatives     |# of false positves |
 
-|actual positves   | # of false negatives     |# of true positives 
+|actual positves   | # of false negatives     |# of true positives |
 
 Here in the matrix, negatives means your classifier returns a False boolean value and postive means your classifier returns a True boolean value.  
 

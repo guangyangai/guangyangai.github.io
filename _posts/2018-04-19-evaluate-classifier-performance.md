@@ -1,7 +1,6 @@
 An important concept in evaluating a classifier is confusion matrix. Confusion matrix is a symmetric matrix showing the number 
 of correct and wrong classification on a set of test data for which the true values are known. 
 
-confusion matrix:
 
 |              |					predicted negatives  |   predicted postives |
 |--------------|:------------------------------:| ------------------:| 

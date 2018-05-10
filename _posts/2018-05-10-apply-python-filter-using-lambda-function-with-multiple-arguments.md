@@ -24,6 +24,7 @@ list(filter(func('capacityUsed',2), rows))
 
 The solution is to use *functools.partial* tool, if you use:
 ``` python 
+import functools
 list(filter(functools.partial(func, col='capacityUsed', val=2),rows))
 ```
 See what you get!

@@ -4,8 +4,8 @@ It's not really helpful if you cannot use a dynamic lambda with multiple argumen
 to filter the list based on one of the key in the dict. However, you want to pass the key name and the value to the lambda function. 
 For a simple example, you have a list like the following:
 ```python
-[{'capacityUsed': 2, 'quantitySent': 3, 'storeId': '234'},
- {'capacityUsed': 1, 'quantitySent': 2, 'storeId': '123'}]
+rows = [{'capacityUsed': 2, 'quantitySent': 3, 'storeId': '234'},
+        {'capacityUsed': 1, 'quantitySent': 2, 'storeId': '123'}]
 ```
 
 You want to filter this list with key('quantitySent') being value=2. You want to pass the key and value to the lambda function:

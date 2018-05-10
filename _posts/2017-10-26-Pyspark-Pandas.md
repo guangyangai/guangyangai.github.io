@@ -46,6 +46,11 @@ Data inspection methods in *pandas*
   * df['column_name'].value_counts()
   * df.info
   * df.desribe() 
+  
+Some useful functions in *pandas*
+  * df.sort_index(axis=1, ascending=False)
+  * df.sort_values(by=‘<col_name>’)
+  * df.groupby(‘<col_name>’).sum() 
 
 Supported Operations on DataFrames in *pyspark.sql*:
   * Conversion

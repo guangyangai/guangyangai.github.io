@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Data Scientist with a PhD degree in Engineering, Enrolling in Udacity Self Driving Engineering Nanodegree
+Data Scientist with a PhD degree in Engineering, with interest in finance and AI
 
 ### More Information
 

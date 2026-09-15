@@ -2,7 +2,12 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import BrainGraph from '../components/BrainGraph.tsx';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { NODES } from '../components/graphData';
+
+// Nodes that have a destination — used for the accessible/no-JS text graph.
+const linkNodes = NODES.filter((n) => n.href && n.group !== 'core');
 ---
 
 <!doctype html>
@@ -10,33 +15,84 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-			.hero { margin: 2rem 0 3rem; }
-			.hero h1 { font-size: 2.4rem; line-height: 1.15; margin-bottom: 0.5rem; }
-			.thesis {
-				font-size: 1.25rem; line-height: 1.5; color: rgb(var(--gray-dark));
-				border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0;
+			/* ---- 3D hero ---- */
+			.brain-hero {
+				position: relative;
+				width: 100vw;
+				margin-left: calc(50% - 50vw);
+				height: min(78vh, 720px);
+				background: radial-gradient(120% 120% at 50% 30%, #0d1830, #070d18 70%);
+				overflow: hidden;
 			}
-			.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; }
+			.brain-canvas { position: absolute; inset: 0; }
+			/* Overlay copy sits on top of the canvas, non-blocking */
+			.brain-overlay {
+				position: absolute;
+				left: 0; right: 0; bottom: 0;
+				padding: 1.5rem 1.25rem 2rem;
+				pointer-events: none;
+				background: linear-gradient(0deg, rgba(7,13,24,0.85), transparent);
+			}
+			.brain-overlay .inner {
+				width: 720px; max-width: calc(100% - 2em); margin: 0 auto;
+			}
+			.brain-overlay h1 {
+				color: #eaf6ff; font-size: 2.2rem; line-height: 1.1; margin: 0 0 0.4rem;
+			}
+			.brain-overlay h1 span { font-weight: 400; color: #7f9fca; }
+			.brain-overlay p { color: #b7cbe6; margin: 0; max-width: 40ch; }
+			.brain-hint {
+				position: absolute; top: 1rem; right: 1.1rem;
+				color: #6f8bb3; font-size: 0.78rem; letter-spacing: 0.04em;
+				pointer-events: none;
+			}
+
+			/* ---- Static fallback / SEO content (always in DOM) ---- */
+			/* When JS+WebGL work, BrainGraph renders into .brain-canvas and this
+			   text block below still provides the crawlable, no-JS-friendly version. */
+			.noscript-note { display: none; }
+			.fallback { margin: 2.5rem 0 1rem; }
+			.thesis {
+				font-size: 1.2rem; line-height: 1.5; color: rgb(var(--gray-dark));
+				border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1.25rem 0;
+			}
+			.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0; }
 			.tag {
 				background: rgba(var(--gray-light), 0.6); padding: 0.3rem 0.75rem;
 				border-radius: 999px; font-size: 0.9rem; font-weight: 500;
 			}
-			.pillars { display: grid; gap: 1rem; margin: 2rem 0; }
-			.pillar { padding: 1rem 1.25rem; border: 1px solid rgb(var(--gray-light)); border-radius: 12px; }
-			.pillar h3 { margin: 0 0 0.35rem; }
-			.pillar p { margin: 0; color: rgb(var(--gray-dark)); }
-			.cta { margin-top: 2rem; }
+			.map { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.75rem; margin: 1.5rem 0; }
+			.map a {
+				display: block; text-decoration: none; color: rgb(var(--black));
+				border: 1px solid rgb(var(--gray-light)); border-radius: 12px; padding: 0.8rem 1rem;
+				transition: border-color 0.15s ease, transform 0.15s ease;
+			}
+			.map a:hover { border-color: var(--accent); transform: translateY(-1px); }
+			.map a strong { display: block; }
+			.map a span { color: rgb(var(--gray)); font-size: 0.85rem; }
+			.cta { margin-top: 1.5rem; }
 			.cta a { font-weight: 600; }
 		</style>
 	</head>
 	<body>
 		<Header />
+
+		<section class="brain-hero">
+			<div class="brain-canvas">
+				<BrainGraph client:only="react" />
+			</div>
+			<div class="brain-hint">floating mind · hover a node · click to zoom in</div>
+			<div class="brain-overlay">
+				<div class="inner">
+					<h1>Guang Yang <span>/ 杨光</span></h1>
+					<p>A mind mapped as a graph: the ideas, projects, and directions I work across — hover to explore.</p>
+				</div>
+			</div>
+		</section>
+
 		<main>
-			<section class="hero">
-				<h1>Guang Yang <span style="font-weight:400;color:rgb(var(--gray))">/ 杨光</span></h1>
-				<p style="font-size:1.1rem;color:rgb(var(--gray-dark))">
-					Physical AI researcher & builder. PhD in AI for Earth Science.
-				</p>
+			<!-- SEO + no-JS + no-WebGL fallback: the same content, as text. -->
+			<section class="fallback">
 				<p class="thesis">
 					I bring the rigor of earth science — uncertainty quantification, simulation,
 					geostatistics — to the softest spot in AI agents: <strong>why should anyone trust a
@@ -49,27 +105,23 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 					<span class="tag">Multi-Agent Systems</span>
 					<span class="tag">Uncertainty Quantification</span>
 				</div>
-			</section>
 
-			<section class="pillars">
-				<div class="pillar">
-					<h3>Agent Evaluation</h3>
-					<p>Bringing UQ to a field still reporting "82.4% accuracy" with no confidence interval. If it has no error bars, it isn't science.</p>
+				<div class="map">
+					{
+						linkNodes.map((n) => (
+							<a href={n.href}>
+								<strong>{n.label}</strong>
+								{n.sub && <span>{n.sub}</span>}
+							</a>
+						))
+					}
 				</div>
-				<div class="pillar">
-					<h3>AI for Science / UQ</h3>
-					<p>Fluid simulation, geostatistics, uncertainty quantification — the physical and statistical grounding most AI work skips.</p>
-				</div>
-				<div class="pillar">
-					<h3>Physical AI</h3>
-					<p>Embodied intelligence and MARL scheduling — building it hands-on, and honest about where sim-to-real actually breaks.</p>
-				</div>
-			</section>
 
-			<p class="cta">
-				→ Read the <a href="/blog">writing</a>, see the <a href="/projects">projects</a>,
-				or learn <a href="/about">more about me</a>.
-			</p>
+				<p class="cta">
+					→ Read the <a href="/blog">writing</a>, follow the <a href="/streams">streams</a>,
+					see the <a href="/projects">projects</a>, or learn <a href="/about">more about me</a>.
+				</p>
+			</section>
 		</main>
 		<Footer />
 	</body>

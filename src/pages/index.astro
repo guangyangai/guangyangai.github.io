@@ -4,10 +4,13 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import BrainGraph from '../components/BrainGraph.tsx';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import { NODES } from '../components/graphData';
+import { NODES, TOPICS } from '../components/graphData';
 
-// Nodes that have a destination — used for the accessible/no-JS text graph.
-const linkNodes = NODES.filter((n) => n.href && n.group !== 'core');
+// Build the hierarchical text version: each topic (L2) with its child links (L3).
+const topicSections = TOPICS.map((t) => ({
+	...t,
+	children: NODES.filter((n) => n.parent === t.id && n.href),
+}));
 ---
 
 <!doctype html>
@@ -61,6 +64,9 @@ const linkNodes = NODES.filter((n) => n.href && n.group !== 'core');
 				background: rgba(var(--gray-light), 0.6); padding: 0.3rem 0.75rem;
 				border-radius: 999px; font-size: 0.9rem; font-weight: 500;
 			}
+			.topic { margin: 2rem 0; }
+			.topic h2 { font-size: 1.5rem; margin: 0 0 0.4rem; }
+			.topic > p { color: rgb(var(--gray-dark)); margin: 0 0 0.9rem; max-width: 62ch; }
 			.map { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.75rem; margin: 1.5rem 0; }
 			.map a {
 				display: block; text-decoration: none; color: rgb(var(--black));
@@ -94,28 +100,27 @@ const linkNodes = NODES.filter((n) => n.href && n.group !== 'core');
 			<!-- SEO + no-JS + no-WebGL fallback: the same content, as text. -->
 			<section class="fallback">
 				<p class="thesis">
-					I bring the rigor of earth science — uncertainty quantification, simulation,
-					geostatistics — to the softest spot in AI agents: <strong>why should anyone trust a
-					multi-agent system's decisions in an uncertain, physical world?</strong>
+					I work at the intersection of three things: teaching AI to act in the physical
+					world, learning to <strong>trust</strong> what agents decide, and carrying the
+					rigor of science into both.
 				</p>
-				<div class="tags">
-					<span class="tag">Agent Evaluation</span>
-					<span class="tag">AI for Science</span>
-					<span class="tag">Physical AI</span>
-					<span class="tag">Multi-Agent Systems</span>
-					<span class="tag">Uncertainty Quantification</span>
-				</div>
 
-				<div class="map">
-					{
-						linkNodes.map((n) => (
-							<a href={n.href}>
-								<strong>{n.label}</strong>
-								{n.sub && <span>{n.sub}</span>}
-							</a>
-						))
-					}
-				</div>
+				{
+					topicSections.map((t) => (
+						<div class="topic">
+							<h2>{t.label}</h2>
+							<p>{t.summary}</p>
+							<div class="map">
+								{t.children.map((n) => (
+									<a href={n.href}>
+										<strong>{n.label}</strong>
+										{n.sub && <span>{n.sub}</span>}
+									</a>
+								))}
+							</div>
+						</div>
+					))
+				}
 
 				<p class="cta">
 					→ Read the <a href="/blog">writing</a>, follow the <a href="/streams">streams</a>,

@@ -116,10 +116,11 @@ function Node({
 	setHovered: (id: string | null) => void;
 	onSelect: (n: GraphNode) => void;
 }) {
-	const isCore = node.group === 'core';
+	const isCore = node.level === 1;
 	const color = GROUP_COLORS[node.group];
 	const isHover = hovered === node.id;
-	const r = (node.size ?? 1) * (isCore ? 0.42 : 0.24) * (isHover ? 1.35 : 1);
+	const baseR = node.level === 1 ? 0.42 : node.level === 2 ? 0.32 : 0.2;
+	const r = (node.size ?? 1) * baseR * (isHover ? 1.35 : 1) / (node.level === 2 ? 1.15 : 1);
 	const p = vec(node);
 
 	return (
@@ -152,7 +153,7 @@ function Node({
 				<sphereGeometry args={[r * 1.8, 20, 20]} />
 				<meshBasicMaterial color={color} transparent opacity={isHover ? 0.2 : 0.08} />
 			</mesh>
-			{(isHover || isCore) && (
+			{(isHover || isCore || node.level === 2) && (
 				<Html center distanceFactor={11} style={{ pointerEvents: 'none' }}>
 					<div
 						style={{
@@ -177,13 +178,16 @@ function Node({
 
 function Edge({ from, to, active }: { from: GraphNode; to: GraphNode; active: boolean }) {
 	const points = useMemo(() => [vec(from), vec(to)], [from, to]);
+	// color by the child's topic branch; L1->L2 edges are a touch bolder
+	const base = GROUP_COLORS[to.group] ?? '#3f6da8';
+	const isTrunk = to.level === 2;
 	return (
 		<Line
 			points={points}
-			color={active ? '#38e1ff' : '#3f6da8'}
-			lineWidth={active ? 1.8 : 0.8}
+			color={active ? '#eaf6ff' : base}
+			lineWidth={active ? 2.2 : isTrunk ? 1.4 : 0.8}
 			transparent
-			opacity={active ? 0.9 : 0.3}
+			opacity={active ? 0.95 : isTrunk ? 0.55 : 0.32}
 		/>
 	);
 }

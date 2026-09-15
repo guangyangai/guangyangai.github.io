@@ -1,0 +1,219 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+const title = 'Streams';
+const description =
+	'Two ongoing content streams: making AI4S/UQ legible, and turning papers into opinionated takes. Where my thinking gets published as it accrues.';
+
+// Streams map to the P4 / P5 content directions.
+const streams = [
+	{
+		code: 'S1',
+		name: 'AI4S / UQ, made legible',
+		tagline: 'Turning "important but nobody explains it well" into things practitioners actually get.',
+		body: 'Conformal prediction, Bayesian UQ, distribution-shift detection — the statistical grounding most AI work skips, rewritten for people who build systems. Each piece pairs a plain-language explanation with a diagram and, where useful, runnable code.',
+		published: [
+			{
+				title: 'In the age of AI, your cognitive boundary is the ceiling',
+				href: '/blog/cognitive-boundary-is-the-ceiling/',
+				note: 'Why the tools stopped being the bottleneck.',
+			},
+		],
+		planned: [
+			'Putting a confidence interval on an agent’s output with conformal prediction',
+			'Why evaluation quietly breaks under distribution shift',
+			'Bayesian vs. frequentist uncertainty, without the jargon',
+		],
+	},
+	{
+		code: 'S2',
+		name: 'Papers → opinionated takes',
+		tagline: 'Not summaries. Positions.',
+		body: 'I read a paper and distil a critical, argued take — a one-line verdict, a short thread, or a long-form review. The goal is judgment, not coverage: what holds up, what doesn’t, and where the error bars actually are.',
+		published: [
+			{
+				title: 'I added causal reasoning to my scheduler. It made things worse — and I published that.',
+				href: '/blog/geocord-honest-negative-result/',
+				note: 'An honest negative result, treated as a first-class finding.',
+			},
+		],
+		planned: [
+			'Take queue is open — drop a paper and it becomes a take',
+		],
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${title} · Guang Yang`} description={description} />
+		<style>
+			:root {
+				--node-cyan: #38e1ff;
+				--node-blue: #6aa8ff;
+				--stream-bg: #0b1220;
+				--stream-panel: #111c2e;
+				--stream-line: rgba(120, 180, 255, 0.22);
+				--stream-text: #c7d4e6;
+				--stream-dim: #8195b0;
+			}
+			.intro { margin: 2rem 0 2.5rem; }
+			.intro h1 {
+				font-size: 2.4rem;
+				line-height: 1.15;
+				margin-bottom: 0.5rem;
+			}
+			.intro .lede {
+				font-size: 1.2rem;
+				line-height: 1.5;
+				color: rgb(var(--gray-dark));
+				border-left: 4px solid var(--accent);
+				padding-left: 1rem;
+				margin: 1.25rem 0;
+			}
+			.streams { display: grid; gap: 1.5rem; margin: 2rem 0; }
+
+			/* Cool-tone tech / knowledge-graph panels */
+			.stream {
+				position: relative;
+				background:
+					radial-gradient(120% 140% at 100% 0%, rgba(56, 225, 255, 0.10), transparent 55%),
+					linear-gradient(180deg, var(--stream-panel), var(--stream-bg));
+				border: 1px solid var(--stream-line);
+				border-radius: 16px;
+				padding: 1.5rem 1.6rem;
+				color: var(--stream-text);
+				box-shadow: 0 10px 30px rgba(6, 12, 24, 0.35);
+				overflow: hidden;
+			}
+			.stream::before {
+				/* faint node/edge grid, purely decorative */
+				content: '';
+				position: absolute;
+				inset: 0;
+				background-image:
+					radial-gradient(circle at 20% 30%, var(--node-cyan) 0 1.5px, transparent 2px),
+					radial-gradient(circle at 70% 65%, var(--node-blue) 0 1.5px, transparent 2px),
+					radial-gradient(circle at 88% 18%, var(--node-cyan) 0 1.5px, transparent 2px);
+				opacity: 0.35;
+				pointer-events: none;
+			}
+			.stream > * { position: relative; }
+			.stream .code {
+				display: inline-block;
+				font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+				font-size: 0.8rem;
+				letter-spacing: 0.12em;
+				color: var(--node-cyan);
+				border: 1px solid var(--stream-line);
+				border-radius: 999px;
+				padding: 0.15rem 0.6rem;
+				margin-bottom: 0.75rem;
+			}
+			.stream h2 {
+				color: #eaf2ff;
+				font-size: 1.6rem;
+				margin: 0.2rem 0 0.35rem;
+			}
+			.stream .tagline {
+				color: var(--node-blue);
+				font-weight: 600;
+				margin: 0 0 0.75rem;
+			}
+			.stream .body { color: var(--stream-dim); margin-bottom: 1.1rem; }
+
+			.group-label {
+				font-size: 0.78rem;
+				text-transform: uppercase;
+				letter-spacing: 0.14em;
+				color: var(--stream-dim);
+				margin: 1rem 0 0.5rem;
+			}
+			.stream ul { list-style: none; padding: 0; margin: 0 0 0.5rem; }
+			.stream li { margin: 0.4rem 0; line-height: 1.45; }
+
+			.item-live a { color: #eaf2ff; font-weight: 600; text-decoration: none; }
+			.item-live a:hover { color: var(--node-cyan); text-decoration: underline; }
+			.item-live .note { color: var(--stream-dim); font-size: 0.95rem; }
+			.pill-live {
+				font-size: 0.7rem;
+				color: #06131f;
+				background: var(--node-cyan);
+				border-radius: 999px;
+				padding: 0.05rem 0.5rem;
+				font-weight: 700;
+				margin-right: 0.5rem;
+				vertical-align: 0.08em;
+			}
+			.item-planned { color: var(--stream-dim); }
+			.item-planned::before {
+				content: '◇';
+				color: var(--node-blue);
+				margin-right: 0.55rem;
+			}
+
+			.footnote { color: rgb(var(--gray)); font-size: 0.95rem; margin-top: 2rem; }
+
+			@media (prefers-reduced-motion: no-preference) {
+				.stream { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+				.stream:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(6, 12, 24, 0.45); }
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="intro">
+				<h1>Streams</h1>
+				<p class="lede">
+					Two ongoing streams of thinking, published as they accrue. Not a blog archive —
+					these are the <em>directions</em> the writing flows along.
+				</p>
+				<p style="color:rgb(var(--gray-dark))">
+					Nodes in the knowledge graph point here. As each stream produces finished pieces,
+					they surface below and graduate into the <a href="/blog">blog</a>.
+				</p>
+			</section>
+
+			<section class="streams">
+				{
+					streams.map((s) => (
+						<article class="stream">
+							<span class="code">{s.code}</span>
+							<h2>{s.name}</h2>
+							<p class="tagline">{s.tagline}</p>
+							<p class="body">{s.body}</p>
+
+							<div class="group-label">Published</div>
+							<ul>
+								{s.published.map((p) => (
+									<li class="item-live">
+										<span class="pill-live">LIVE</span>
+										<a href={p.href}>{p.title}</a>
+										{p.note && <div class="note">{p.note}</div>}
+									</li>
+								))}
+							</ul>
+
+							<div class="group-label">In the pipeline</div>
+							<ul>
+								{s.planned.map((p) => (
+									<li class="item-planned">{p}</li>
+								))}
+							</ul>
+						</article>
+					))
+				}
+			</section>
+
+			<p class="footnote">
+				→ Back to the <a href="/">graph</a>, browse the <a href="/blog">blog</a>,
+				or see the <a href="/projects">projects</a>.
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>

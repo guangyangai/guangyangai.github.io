@@ -1,0 +1,76 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.hero { margin: 2rem 0 3rem; }
+			.hero h1 { font-size: 2.4rem; line-height: 1.15; margin-bottom: 0.5rem; }
+			.thesis {
+				font-size: 1.25rem; line-height: 1.5; color: rgb(var(--gray-dark));
+				border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0;
+			}
+			.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; }
+			.tag {
+				background: rgba(var(--gray-light), 0.6); padding: 0.3rem 0.75rem;
+				border-radius: 999px; font-size: 0.9rem; font-weight: 500;
+			}
+			.pillars { display: grid; gap: 1rem; margin: 2rem 0; }
+			.pillar { padding: 1rem 1.25rem; border: 1px solid rgb(var(--gray-light)); border-radius: 12px; }
+			.pillar h3 { margin: 0 0 0.35rem; }
+			.pillar p { margin: 0; color: rgb(var(--gray-dark)); }
+			.cta { margin-top: 2rem; }
+			.cta a { font-weight: 600; }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="hero">
+				<h1>Kevin Yang <span style="font-weight:400;color:rgb(var(--gray))">/ 杨光</span></h1>
+				<p style="font-size:1.1rem;color:rgb(var(--gray-dark))">
+					Physical AI researcher & builder. PhD in AI for Earth Science.
+				</p>
+				<p class="thesis">
+					I bring the rigor of earth science — uncertainty quantification, simulation,
+					geostatistics — to the softest spot in AI agents: <strong>why should anyone trust a
+					multi-agent system's decisions in an uncertain, physical world?</strong>
+				</p>
+				<div class="tags">
+					<span class="tag">Agent Evaluation</span>
+					<span class="tag">AI for Science</span>
+					<span class="tag">Physical AI</span>
+					<span class="tag">Multi-Agent Systems</span>
+					<span class="tag">Uncertainty Quantification</span>
+				</div>
+			</section>
+
+			<section class="pillars">
+				<div class="pillar">
+					<h3>Agent Evaluation</h3>
+					<p>Bringing UQ to a field still reporting "82.4% accuracy" with no confidence interval. If it has no error bars, it isn't science.</p>
+				</div>
+				<div class="pillar">
+					<h3>AI for Science / UQ</h3>
+					<p>Fluid simulation, geostatistics, uncertainty quantification — the physical and statistical grounding most AI work skips.</p>
+				</div>
+				<div class="pillar">
+					<h3>Physical AI</h3>
+					<p>Embodied intelligence and MARL scheduling — building it hands-on, and honest about where sim-to-real actually breaks.</p>
+				</div>
+			</section>
+
+			<p class="cta">
+				→ Read the <a href="/blog">writing</a>, see the <a href="/projects">projects</a>,
+				or learn <a href="/about">more about me</a>.
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>

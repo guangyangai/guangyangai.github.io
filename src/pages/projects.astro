@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/BlogPost.astro';
+---
+
+<Layout
+	title="Projects"
+	description="Selected work in Physical AI, multi-agent RL, and AI for science."
+	pubDate={new Date('September 15 2026')}
+>
+	<p>Selected hands-on work. Code and write-ups where I can share them.</p>
+
+	<h2>GeoCoRD — Causal-augmented multi-agent scheduling</h2>
+	<p>
+		A geo-distributed multi-agent RL scheduler (MAPPO backbone + structural causal models for
+		counterfactual reasoning). Robust under regional outages and 10× bursts where rule-based and
+		centralized-DQN schedulers collapse. Notably, I report an <strong>honest negative result</strong>:
+		the causal layer, in its original form, hurt reliability — and I traced why, then partially fixed
+		it with a regret-gated penalty. <em>(Under submission.)</em>
+	</p>
+
+	<h2>Dummy V2 — LLM-agent driven robotic grasping</h2>
+	<p>
+		A 6-DOF arm driven by an LLM ReAct agent: the model reasons, calls motion/vision tools, and grasps
+		objects, with its thinking process streamed live to a web UI. Vision via NPU or classical CV;
+		execution over a real serial/CAN stack. A concrete look at where LLM-planned manipulation actually
+		stands today.
+	</p>
+
+	<h2>Isaac Sim SDG on Deadline Cloud</h2>
+	<p>
+		A distributed synthetic-data-generation pipeline: NVIDIA Isaac Sim domain randomization scaled out
+		as cloud render jobs (RGB / depth / semantic / bbox outputs). Infrastructure for training data at
+		scale.
+	</p>
+
+	<p><em>More detail and links coming as repos are published.</em></p>
+</Layout>
